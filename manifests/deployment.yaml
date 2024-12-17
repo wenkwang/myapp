@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wenk-test-1
+  labels:
+    app: wenk-test-1
+    kubernetes.azure.com/generator: devhub
+  namespace: namespace-workflow-1734448954021
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: wenk-test-1
+  template:
+    metadata:
+      labels:
+        app: wenk-test-1
+    spec:
+      containers:
+        - name: wenk-test-1
+          image: wyregistry.azurecr.io/image-workflow-1734448954021:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
